@@ -1,0 +1,22 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "emmet.triggerExpansionOnTab": true,
+  "files.autoSave": "afterDelay",
+  "editor.formatOnPaste": true,
+  "html.format.contentUnformatted": "",
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 9999,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.settings.useSplitJSON": true,
+  "json.schemas": [],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "css.lint.unknownAtRules": "ignore",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.autofetch": true,
+  "window.zoomLevel": 1
+}

@@ -1,0 +1,11 @@
+@charset 'utf-8';
+
+.hide-pdf {
+  @media print {
+    display: none !important;
+  }
+}
+
+.w-full {
+  width: 100%;
+}

@@ -1,0 +1,52 @@
+@charset 'utf-8';
+@use '../utils/variables' as *;
+
+.section__auth {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  align-items: flex-end;
+
+  @media (min-width: 992px) {
+    justify-content: flex-end;
+  }
+
+  & .form {
+    background-color: rgba($color: $black, $alpha: 0.5);
+    border: 1px solid darken($color: $white, $amount: 65);
+    backdrop-filter: blur(5px);
+    margin: 20px;
+    min-height: calc(100% - 40px);
+
+    @media (min-width: 768px) {
+      height: 450px;
+      min-height: auto;
+    }
+
+    @media (min-width: 992px) {
+      width: 480px;
+      height: calc(100% - 40px);
+      min-height: auto;
+    }
+  }
+
+  & .figure {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-image: url('/assets/image/photo/jeremy-bishop-uAfZBP-GtiA-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      clear: both;
+      background-color: rgba($color: $black, $alpha: 0.5);
+    }
+  }
+}

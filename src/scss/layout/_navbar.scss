@@ -1,0 +1,38 @@
+@charset 'utf-8';
+@use "../utils/variables" as *;
+
+.nav {
+  padding-block: 15px;
+  margin-inline: 100px;
+  display: flex;
+  grid-gap: 15px;
+  justify-content: space-between;
+  border-bottom: $borderHeightBase solid #d9d9d9;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+
+    &.menu {
+      display: flex;
+      grid-gap: 15px;
+    }
+
+    &.account {
+      display: flex;
+      grid-gap: 15px;
+    }
+
+    & button {
+      border: 0;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    & a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 15px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+.container,
+.container-fluid {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+// Container settings
+.container {
+  max-width: 1200px;
+}

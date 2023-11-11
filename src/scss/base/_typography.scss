@@ -1,0 +1,84 @@
+@charset 'utf-8';
+
+p,
+small,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin: 0;
+}
+
+h {
+  &1 {
+    font-size: 36px;
+  }
+
+  &2 {
+    font-size: 30px;
+  }
+
+  &-3 {
+    font-size: 24px;
+  }
+
+  &-4 {
+    font-size: 18px;
+  }
+
+  &-5 {
+    font-size: 14px;
+  }
+
+  &-6 {
+    font-size: 12px;
+  }
+}
+
+.text {
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: right;
+  }
+}
+
+.text__hide {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0 0 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+
+  &--sm {
+    @media (min-width: 540px) {
+    }
+  }
+
+  &--md {
+    @media (min-width: 768px) {
+    }
+  }
+
+  &--lg {
+    @media (min-width: 992px) {
+    }
+  }
+
+  &--xl {
+    @media (min-width: 1200px) {
+    }
+  }
+}

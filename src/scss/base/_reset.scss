@@ -1,0 +1,38 @@
+@charset 'utf-8';
+
+html {
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body,
+.app {
+  min-height: 100vh;
+}
+
+// Scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #acacac #737373;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #acacac;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #737373;
+  border-radius: 0;
+}
