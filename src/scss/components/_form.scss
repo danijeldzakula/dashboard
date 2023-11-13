@@ -1,0 +1,70 @@
+@charset 'utf-8';
+@use '../utils/variables' as *;
+
+.field {
+  position: relative;
+  min-height: 56px;
+  padding: 16px 0 0;
+  margin-bottom: 15px;
+
+  & .field-label {
+    margin: -50px 0;
+    display: block;
+    line-height: 56px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    color: darken($color: $white, $amount: 50);
+    transition: font-size 0.15s, line-height 0.15s;
+    will-change: font-size, line-height;
+  }
+
+  & .field-input {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    line-height: 16px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  & .field-input {
+    height: 39px;
+  }
+
+  & .field-label::after,
+  &::before {
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: darken($color: $white, $amount: 15);
+  }
+
+  & .field-label::after {
+    bottom: 0;
+    background-color: $primary;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    will-change: transform;
+  }
+
+  & .field-input:invalid:focus ~ .field-label,
+  & .field-input:valid ~ .field-label {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  & .field-input:focus ~ .field-label {
+    color: $primary;
+  }
+
+  & .field-input:focus ~ .field-label::after {
+    transform: scaleX(1);
+  }
+}

@@ -3,6 +3,7 @@
 
 // SECTION STUDIO EDITOR
 .section__studio {
+
   // Layout
   & > .wrapper {
     display: grid;
@@ -83,7 +84,7 @@
           flex-direction: column;
           grid-gap: #{$gapBase * 2};
           padding: #{$paddingBase * 4} #{$paddingBase * 2};
-          min-height: calc(300vh - #{$heightBase * 8});
+          min-height: calc(100vh - #{$heightBase * 8});
 
           @media print {
             padding: #{$paddingBase - 2};
@@ -151,6 +152,7 @@
       }
 
       & .main {
+        padding: 32px 16px;
         background-color: lighten($color: $officialColor, $amount: 90);
       }
     }
@@ -166,10 +168,13 @@
 }
 
 [data-theme='dark'] {
+
   // SECTION STUDIO EDITOR
   .section__studio {
+
     // Layout
     & > .wrapper {
+
       // Sidebar of Layout
       & .sidebar__content {
         background-color: lighten($color: $officialColor, $amount: 15);

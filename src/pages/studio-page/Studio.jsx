@@ -1,6 +1,6 @@
-import { Section, Wrapper } from '../../components/content';
-import Layout from '../../layouts';
-import Content from '../../components/content-elements';
+import { Section, Wrapper } from '@/components/content';
+import Layout from '@/layouts';
+import Content from '@/components/content-elements';
 
 const BREAD_CRUMB = [
   {

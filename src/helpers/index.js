@@ -1,8 +1,8 @@
-function uuidv4() {
+export function uuidv4() {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
 }
 
-function scrollFreeze() {
+export function scrollFreeze() {
   let html = document.documentElement;
   let htmlPosition = html.style.position;
   let scrollPosition = html.scrollTop;
@@ -16,7 +16,7 @@ function scrollFreeze() {
   }
 }
 
-function scrollUnfreeze() {
+export function scrollUnfreeze() {
   let html = document.documentElement;
   let htmlPosition = html.style.position;
 
@@ -31,21 +31,14 @@ function scrollUnfreeze() {
   }
 }
 
-function arrayMoveMutable(array, fromIndex, toIndex) {
-  const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
+export function arrayMoveImmutable(array, fromIndex, toIndex) {
+  const element = array.splice(fromIndex, 1)[0];
+  array.splice(toIndex, 0, element);
+  return array;
+};
 
-  if (startIndex >= 0 && startIndex < array.length) {
-    const endIndex = toIndex < 0 ? array.length + toIndex : toIndex;
 
-    const [item] = array.splice(fromIndex, 1);
-    array.splice(endIndex, 0, item);
-  }
+export function isValidEmail(value) {
+  const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(value);
 }
-
-function arrayMoveImmutable(array, fromIndex, toIndex) {
-  const newArray = [...array];
-  arrayMoveMutable(newArray, fromIndex, toIndex);
-  return newArray;
-}
-
-export { uuidv4, scrollFreeze, scrollUnfreeze, arrayMoveImmutable };

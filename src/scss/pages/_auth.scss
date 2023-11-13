@@ -5,48 +5,138 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  display: grid;
-  align-items: flex-end;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 384px;
+  }
 
   @media (min-width: 992px) {
-    justify-content: flex-end;
+    grid-template-columns: 1fr 496px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 600px;
+  }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: 1fr 700px;
   }
 
   & .form {
-    background-color: rgba($color: $black, $alpha: 0.5);
-    border: 1px solid darken($color: $white, $amount: 65);
-    backdrop-filter: blur(5px);
-    margin: 20px;
-    min-height: calc(100% - 40px);
+    background-color: $white;
+    padding-block: 60px;
+    padding-inline: 20px;
 
     @media (min-width: 768px) {
-      height: 450px;
-      min-height: auto;
+      padding-inline: 20px;
     }
 
     @media (min-width: 992px) {
-      width: 480px;
-      height: calc(100% - 40px);
-      min-height: auto;
+      padding-inline: 30px;
+    }
+
+    @media (min-width: 1200px) {
+      padding-inline: 40px;
+    }
+
+    @media (min-width: 1400px) {
+      padding-inline: 60px;
+    }
+
+    & .wrapper {
+      display: grid;
+      align-self: center;
+      grid-gap: 15px;
+    }
+
+    & .title {
+      text-align: center;
+    }
+
+    & .subtitle {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 15px;
+      color: darken($color: $white, $amount: 70);
+    }
+
+    & .group {
+      display: flex;
+      grid-gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-bottom: 15px;
+
+      &-actions {
+        margin-top: 30px;
+
+        & .btn {
+          min-width: 200px;
+          justify-content: center;
+        }
+      }
+
+      & .separator {
+        display: none;
+      }
+
+      @media (min-width: 992px) {
+        & .separator {
+          &-y {
+            width: 1px;
+            height: 24px;
+            background-color: #ddd;
+            display: block;
+          }
+        }
+      }
+
+      & a {
+        font-size: 18px;
+        text-decoration: none;
+        min-width: 200px;
+        text-align: center;
+        line-height: 1.314;
+        border-radius: 3px;
+        color: darken($color: $white, $amount: 50);
+        background-color: darken($color: $white, $amount: 0);
+        justify-content: center;
+
+        &.active {
+          color: darken($color: $black, $amount: 10);
+          background-color: darken($color: $white, $amount: 5);
+        }
+      }
     }
   }
 
   & .figure {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    background-image: url('/assets/image/photo/jeremy-bishop-uAfZBP-GtiA-unsplash.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    z-index: -1;
+    display: none;
+  }
 
-    &::after {
-      position: absolute;
+  @media (min-width: 768px) {
+    & .figure {
+      position: relative;
       inset: 0;
-      content: '';
-      clear: both;
-      background-color: rgba($color: $black, $alpha: 0.5);
+      width: 100%;
+      background-image: url('/assets/image/photo/bg-auth-5.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      z-index: -1;
+      display: block;
+
+      &::after {
+        position: absolute;
+        inset: 0;
+        content: '';
+        clear: both;
+        background-color: rgba($color: $black, $alpha: 0.25);
+      }
     }
   }
 }

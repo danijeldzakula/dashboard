@@ -1,0 +1,24 @@
+@charset 'utf-8';
+@use '../utils/variables' as *;
+
+.alert {
+  padding: 20px 30px;
+  margin-block: 30px;
+  border-radius: 3px;
+  border: 1px solid darken($color: white, $amount: 5);
+  background-color: lighten($color: white, $amount: 45);
+
+  & > * {
+    margin: 0 !important;
+  }
+
+  &-danger {
+    border: 1px solid darken($color: red, $amount: 5);
+    background-color: lighten($color: red, $amount: 45);
+  }
+
+  &-success {
+    border: 1px solid lighten($color: green, $amount: 10);
+    background-color: lighten($color: green, $amount: 70);
+  }
+}

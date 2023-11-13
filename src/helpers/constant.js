@@ -5,3 +5,5 @@ export const ATTRIBUTE_THEME = 'data-theme';
 export const STORAGE_THEME = 'theme';
 export const STORAGE_WIDGET = 'widgets';
 export const REDIRECT_TO = '/dashboard';
+export const HAS_WINDOW = typeof window !== 'undefined';
+

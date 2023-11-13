@@ -3,10 +3,10 @@ import update from 'immutability-helper';
 import Card from './Card';
 import DynamicComponent from '@/widgets/DynamicComponent';
 
-const ContentDrag = ({ data, handleOnClick }) => {
-  const [cards, setCards] = useState(data || []);
+export default function ContentDrag({ data, handleOnClick }) {
+  const [cards, setCards] = useState(data);
 
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
+  const moveCard = (dragIndex, hoverIndex) => {
     setCards((prevCards) =>
       update(prevCards, {
         $splice: [
@@ -15,7 +15,7 @@ const ContentDrag = ({ data, handleOnClick }) => {
         ],
       })
     );
-  }, []);
+  };
 
   const renderCard = useCallback((card, index) => {
     return (
@@ -28,4 +28,3 @@ const ContentDrag = ({ data, handleOnClick }) => {
   return <Fragment>{cards.map((card, i) => renderCard(card, i))}</Fragment>;
 };
 
-export default ContentDrag;

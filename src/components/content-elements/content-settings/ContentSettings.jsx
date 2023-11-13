@@ -1,5 +1,5 @@
-import { useApp } from '../../../context/useApp';
-import { Drawer, Header, Button, Row, Col, Main } from '../../content';
+import { useApp } from '@/context/useApp';
+import { Drawer, Header, Button, Row, Col, Div } from '../../content';
 import { VscChromeClose } from 'react-icons/vsc';
 
 export default function ContentSettings() {
@@ -22,7 +22,7 @@ export default function ContentSettings() {
           </Col>
         </Row>
       </Header>
-      <Main></Main>
+      <Div className='main'></Div>
     </Drawer>
   );
 }

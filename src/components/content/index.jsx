@@ -11,7 +11,7 @@ function Main({ className, children, ...rest }) {
 
 function Div({ className, children, ...rest }) {
   return (
-    <div className={clsx('', className)} {...rest}>
+    <div className={clsx(className)} {...rest}>
       {children}
     </div>
   );

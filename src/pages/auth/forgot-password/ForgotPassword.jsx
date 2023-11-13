@@ -1,11 +1,11 @@
 import Layout from '@/layouts';
+import { useApp } from '@/context/useApp';
 import { Navigate } from 'react-router-dom';
 import { Figure, Section } from '@/components/content';
-import { useApp } from '@/context/useApp';
+import ForgotPasswordForm from '@/components/auth/forgot-password/ForgotPassword';
 import { REDIRECT_TO } from '@/helpers/constant';
-import RegisterForm from '@/components/auth/register/Register';
 
-export default function Register() {
+export default function ForgotPassword() {
   const { loggedIn } = useApp();
 
   if (loggedIn) {
@@ -14,9 +14,9 @@ export default function Register() {
 
   return (
     <Layout>
-      <Section className="section__auth section__auth--register">
+      <Section className="section__auth section__auth--forgot-password">
         <Figure />
-        <RegisterForm />
+        <ForgotPasswordForm />
       </Section>
     </Layout>
   );

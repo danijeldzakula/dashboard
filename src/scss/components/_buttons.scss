@@ -8,8 +8,9 @@
   outline: 0;
   border-radius: $radiusBase;
   background-color: $white;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.01em;
+  line-height: 1.314;
   word-spacing: 0.01em;
   cursor: pointer;
   display: flex;
@@ -45,9 +46,23 @@
     padding: 16px 24px;
   }
 
+  &-link {
+    color: darken($color: $white, $amount: 50);
+  }
+
   &-primary {
     color: $white;
     background-color: $primary;
+    transition: background-color 0.3s ease;
+    will-change: background-color;
+
+    &-link {
+      color: $primary !important;
+    }
+
+    &:is(:hover, :active) {
+      background-color: darken($color: $primary, $amount: 5);
+    }
   }
 
   &-success {

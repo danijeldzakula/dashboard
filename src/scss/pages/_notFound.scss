@@ -1,0 +1,79 @@
+@charset 'utf-8';
+@use '../utils/variables' as *;
+
+.section__error {
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  color: darken($color: $white, $amount: 85);
+
+  & :is(h2, h1, p) {
+    margin-bottom: 30px;
+    line-height: 1.314;
+  }
+
+  & .big-title {
+    font-size: 126px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    word-spacing: 0.2em;
+
+    background: url('/assets/image/photo/bg-space-1.jpg');
+    background-position: center;
+    background-size: contain;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+
+  & .title {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  & .subtitle {
+    position: relative;
+    font-size: 19px;
+    font-weight: 400;
+    padding: 15px 20px;
+    line-height: 1.512;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+
+    & span {
+      display: block;
+    }
+  }
+
+  & a {
+    text-decoration: none;
+    border-radius: 3px;
+    display: block;
+    max-width: max-content;
+    margin: auto;
+    font-weight: 500;
+  }
+
+  & .figure {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-color: $white;
+    background-image: url('/assets/image/photo/bg-auth-5.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: -1;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      clear: both;
+      background-color: rgba($color: $white, $alpha: 0.85);
+    }
+  }
+}

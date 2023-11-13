@@ -1,7 +1,7 @@
 import Layout from '@/layouts';
 import { useApp } from '@/context/useApp';
 import { Navigate } from 'react-router-dom';
-import { Container, Figure, Section } from '@/components/content';
+import { Figure, Section } from '@/components/content';
 import { REDIRECT_TO } from '@/helpers/constant';
 import LoginForm from '@/components/auth/login/LoginForm';
 
