@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useApp } from "@/context/useApp";
 import { NavLink } from "react-router-dom";
 import { isValidEmail } from '@/helpers';
 import { clsx } from 'clsx';
+import { FiLogIn } from 'react-icons/fi';
+import { RippleLink } from "@/components/ripple-link/RippleLink";
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { RippleButton } from "@/components/ripple-button/RippleButton";
 
 const initialState = {
   email: '',
@@ -10,33 +13,17 @@ const initialState = {
 }
 
 export default function LoginForm() {
-  const { setLoggedIn } = useApp();
-
   const [form, setForm] = useState(initialState);
-
-  const onFocus = (event) => { };
-
   const onBlur = (event) => { };
-
-  const onChange = (event) => {
-    setForm((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value
-      }
-    })
-  };
-
-  const onReset = () => {
-    setForm(initialState);
-  };
+  const onFocus = (event) => { };
+  const onReset = () => setForm(initialState);
+  const onChange = (event) => setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  const FORGOT_PASSWORD_URL = form.email !== '' && isValidEmail(form.email) ? `/forgot-password?email=${form.email}` : '/forgot-password';
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log('Payload', form);
   };
-
-  const FORGOT_PASSWORD_URL = form.email !== '' && isValidEmail(form.email) ? `/forgot-password?email=${form.email}` : '/forgot-password';
 
   return (
     <form onSubmit={onSubmit} className="form">
@@ -46,15 +33,15 @@ export default function LoginForm() {
         <p className="subtitle">Welcome to login screen</p>
 
         <div className="group">
-          <NavLink className='btn-medium' to='/login'>
+          <RippleLink to='/login' className='btn btn-link btn-medium'>
             Login
-          </NavLink>
+          </RippleLink>
 
           <span className="separator separator-y" />
 
-          <NavLink className='btn-medium' to='/register'>
+          <RippleLink to='/register' className='btn btn-link btn-medium'>
             Register
-          </NavLink>
+          </RippleLink>
         </div>
 
         <div className="field">
@@ -68,13 +55,21 @@ export default function LoginForm() {
         </div>
 
         <div className="group group-actions">
-          <button onClick={onReset} className='btn btn-link btn-medium' type="button">Restart</button>
-          <button className='btn btn-primary btn-medium' type="submit">Log In</button>
+          <RippleButton type='button' onClick={onReset} className='btn btn-link btn-medium'>
+            Restart
+          </RippleButton>
+
+          <RippleButton type='submit' className='btn btn-primary btn-medium'>
+            <FiLogIn size={20} />
+            Log In
+          </RippleButton>
         </div>
 
         <div className="group">
-          <NavLink className='btn btn-primary-link btn-medium' to={FORGOT_PASSWORD_URL}>
+          <NavLink className='btn btn-primary-link hover-right btn-medium' to={FORGOT_PASSWORD_URL}>
             Forgot Password
+
+            <AiOutlineArrowRight size={22} />
           </NavLink>
         </div>
       </div>

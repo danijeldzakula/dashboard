@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useApp } from '@/context/useApp';
-import { NavLink } from 'react-router-dom';
 import { clsx } from 'clsx';
+import { FiLogIn } from 'react-icons/fi';
+import { RippleButton } from '@/components/ripple-button/RippleButton';
+import { RippleLink } from '@/components/ripple-link/RippleLink';
 
 const initialState = {
   firstName: '',
@@ -12,27 +13,11 @@ const initialState = {
 }
 
 export default function RegisterForm() {
-  const { setLoggedIn } = useApp();
-
   const [form, setForm] = useState(initialState);
-
   const onFocus = (event) => { };
-
   const onBlur = (event) => { };
-
-  const onChange = (event) => {
-    setForm((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value
-      }
-    })
-  };
-
-  const onReset = () => {
-    setForm(initialState);
-  };
-
+  const onReset = () => setForm(initialState);
+  const onChange = (event) => setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   const onSubmit = (event) => {
     event.preventDefault();
     console.log('Payload', form);
@@ -46,15 +31,15 @@ export default function RegisterForm() {
         <p className='subtitle'>Create your account</p>
 
         <div className="group">
-          <NavLink className='btn-medium' to='/login'>
+          <RippleLink to="/login" className='btn btn-link btn-medium'>
             Login
-          </NavLink>
+          </RippleLink>
 
           <span className="separator separator-y" />
 
-          <NavLink className='btn-medium' to='/register'>
+          <RippleLink to="/register" className='btn btn-link btn-medium'>
             Register
-          </NavLink>
+          </RippleLink>
         </div>
 
 
@@ -84,8 +69,14 @@ export default function RegisterForm() {
         </div>
 
         <div className="group group-actions">
-          <button onClick={onReset} className='btn btn-link btn-medium' type="button">Restart</button>
-          <button className='btn btn-primary btn-medium' type="submit">Create Account</button>
+          <RippleButton type='button' onClick={onReset} className='btn btn-link btn-medium'>
+            Restart
+          </RippleButton>
+
+          <RippleButton type='submit' className='btn btn-primary btn-medium'>
+            <FiLogIn size={20} />
+            Create Account
+          </RippleButton>
         </div>
       </div>
     </form>

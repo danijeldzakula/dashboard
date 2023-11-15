@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useApp } from "@/context/useApp";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { clsx } from 'clsx';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const initialState = {
   email: ''
@@ -54,7 +55,6 @@ export default function ForgotPasswordForm() {
         <h1 className="title">Investment</h1>
         <p className="subtitle">Forgot Password?</p>
 
-
         <div className="field">
           <input value={form.email} onChange={onChange} onFocus={onFocus} onBlur={onBlur} type="email" id="email" name="email" className="field-input" autoComplete="off" required />
           <label htmlFor="email" className={clsx('field-label')}>Email</label>
@@ -66,7 +66,9 @@ export default function ForgotPasswordForm() {
         </div>
 
         <div className="group">
-          <NavLink className='btn btn-primary-link btn-medium' to='/login'>
+          <NavLink className='btn btn-primary-link hover-left btn-medium' to='/login'>
+            <AiOutlineArrowLeft size={22} />
+
             Back to Login
           </NavLink>
         </div>

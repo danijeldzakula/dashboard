@@ -26,7 +26,7 @@
 
   & .form {
     background-color: $white;
-    padding-block: 60px;
+    padding-block: 60px 90px;
     padding-inline: 20px;
 
     @media (min-width: 768px) {
@@ -94,7 +94,8 @@
         }
       }
 
-      & a {
+      & a,
+      & .btn-primary-link {
         font-size: 18px;
         text-decoration: none;
         min-width: 200px;
@@ -104,6 +105,43 @@
         color: darken($color: $white, $amount: 50);
         background-color: darken($color: $white, $amount: 0);
         justify-content: center;
+
+
+        &.hover {
+
+          &-right,
+          &-left {
+            & svg {
+              position: relative;
+            }
+          }
+
+          &-right {
+            & svg {
+              right: 0;
+              transition: right 0.3s ease;
+            }
+
+            &:hover {
+              & svg {
+                right: -8px;
+              }
+            }
+          }
+
+          &-left {
+            & svg {
+              left: 0;
+              transition: left 0.3s ease;
+            }
+
+            &:hover {
+              & svg {
+                left: -8px;
+              }
+            }
+          }
+        }
 
         &.active {
           color: darken($color: $black, $amount: 10);
@@ -135,7 +173,8 @@
         inset: 0;
         content: '';
         clear: both;
-        background-color: rgba($color: $black, $alpha: 0.25);
+        background-color: rgba($color: $black, $alpha: 0.35);
+        // backdrop-filter: blur(5px);
       }
     }
   }

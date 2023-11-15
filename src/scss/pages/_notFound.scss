@@ -3,12 +3,13 @@
 
 .section__error {
   position: relative;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   text-align: center;
-  color: darken($color: $white, $amount: 85);
+  color: darken($color: $black, $amount: 15);
+  padding-block: 100px;
 
   & :is(h2, h1, p) {
     margin-bottom: 30px;
@@ -16,7 +17,7 @@
   }
 
   & .big-title {
-    font-size: 126px;
+    font-size: 64px;
     font-weight: 700;
     letter-spacing: 0.1em;
     word-spacing: 0.2em;
@@ -26,21 +27,59 @@
     background-size: contain;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+
+    @media (min-width: 768px) {
+      font-size: 96px;
+    }
   }
 
   & .title {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    @media (min-width: 992px) {
+      font-size: 24px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 26px;
+    }
+
+    @media (min-width: 1400px) {
+      font-size: 28px;
+    }    
   }
 
   & .subtitle {
     position: relative;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 400;
     padding: 15px 20px;
     line-height: 1.512;
     letter-spacing: 0.05em;
     word-spacing: 0.1em;
+    max-width: 600px;
+    margin-inline: auto;
+
+    @media (min-width: 768px) {
+      font-size: 17px;
+    }
+
+    @media (min-width: 992px) {
+      font-size: 18px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 19px;
+    }
+
+    @media (min-width: 1400px) {
+      font-size: 20px;
+    }
 
     & span {
       display: block;
@@ -73,7 +112,27 @@
       inset: 0;
       content: '';
       clear: both;
-      background-color: rgba($color: $white, $alpha: 0.85);
+      background-color: rgba($color: $white, $alpha: 0.65);
+      // backdrop-filter: blur(5px);
     }
+  }
+
+  & .social-network-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .social-network {
+    position: relative;
+    bottom: inherit;
+    left: inherit;
+    background-color: transparent;
+    width: auto;
   }
 }

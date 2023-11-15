@@ -1,6 +1,47 @@
 @charset 'utf-8';
 @use '../utils/variables' as *;
 
+
+/* TODO: test this out */
+.ripple-button {
+  border-radius: 3px;
+  border: none;
+  padding: 0 24px;
+  background: #1976d2;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  min-width: 180px;
+}
+
+.ripple-button > .ripple {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: #b0d7fe;
+  display: block;
+  content: "";
+  border-radius: 50%;
+  opacity: 1;
+  transform: scale(0);
+  animation: 0.5s ease 1 forwards ripple;
+  will-change: transform, opacity;
+}
+
+.ripple-button > .content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(7);
+    opacity: 0;
+  }
+}
+
 .btn {
   padding: 8px;
   margin: 0;

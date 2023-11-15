@@ -1,0 +1,116 @@
+@charset 'utf-8';
+@use '../utils/variables' as *;
+
+.social-network {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: darken($color: $white, $amount: 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+
+  @media (min-width: 768px) {
+    left: 0;
+    bottom: 30px;
+    width: 384px;
+  }
+
+  @media (min-width: 992px) {
+    width: 496px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1400px) {
+    width: 700px;
+  }
+
+  & ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+      width: max-content;
+    }
+
+    & li {
+      & a {
+        display: flex;
+        align-items: center;
+        grid-gap: 8px;
+        padding: 0 15px;
+        height: 45px;
+        text-decoration: none;
+        opacity: 1;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        word-spacing: 0.05em;
+        color: darken($color: $white, $amount: 70);
+        transform: translateY(0);
+        transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        will-change: color, opacity, transform;
+
+        & svg {
+          opacity: 0;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          transform: translate3d(0, -10px, 0.5px);
+          will-change: opacity, transform;
+        }
+
+        @media (min-width: 768px) {
+          height: 90px;
+        }
+      }
+
+      &:hover {
+        & a {
+          color: $primary;
+          color: darken($color: $white, $amount: 70);
+          transform: translateY(-5px);
+
+          & svg {
+            opacity: 1;
+            transform: translate3d(0, 0, 0.5px);
+          }
+        }
+      }
+
+      &.facebook {
+        &:hover a {
+          color: $facebook;
+        }
+      }
+
+      &.instagram {
+        &:hover a {
+          color: $instagram;
+        }
+      }
+
+      &.twitter {
+        &:hover a {
+          color: $twitter;
+        }
+      }
+    }
+
+    &:hover {
+      & li:not(:hover) {
+        & a {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}

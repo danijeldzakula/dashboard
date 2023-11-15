@@ -1,8 +1,10 @@
 import { Fragment, useState } from "react";
-import { useApp } from "@/context/useApp";
 import { NavLink } from "react-router-dom";
 import { clsx } from 'clsx';
 import { Loading } from "@/components/loading/Loading";
+import { FiLogIn } from 'react-icons/fi';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { RippleButton } from '@/components/ripple-button/RippleButton';
 
 const initialState = {
   newPassword: '',
@@ -10,26 +12,11 @@ const initialState = {
 }
 
 export default function ResetPasswordForm({ token, validToken, tokenLoading }) {
-  const { setLoggedIn } = useApp();
-
   const [form, setForm] = useState(initialState);
-
   const onFocus = (event) => { };
-
   const onBlur = (event) => { };
-
-  const onChange = (event) => {
-    setForm((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value
-      }
-    })
-  };
-
-  const onReset = () => {
-    setForm(initialState);
-  };
+  const onReset = () => setForm(initialState);
+  const onChange = (event) => setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -58,12 +45,20 @@ export default function ResetPasswordForm({ token, validToken, tokenLoading }) {
                 </div>
 
                 <div className="group group-actions">
-                  <button onClick={onReset} className='btn btn-link btn-medium' type="button">Restart</button>
-                  <button className='btn btn-primary btn-medium' type="submit">Log In</button>
+                  <RippleButton type='button' onClick={onReset} className='btn btn-link btn-medium'>
+                    Restart
+                  </RippleButton>
+
+                  <RippleButton type='submit' className='btn btn-primary btn-medium'>
+                    <FiLogIn size={20} />
+                    Log In
+                  </RippleButton>
                 </div>
 
                 <div className="group">
-                  <NavLink className='btn btn-primary-link btn-medium' to='/login'>
+                  <NavLink className='btn btn-primary-link hover-left btn-medium' to='/login'>
+                    <AiOutlineArrowLeft size={22} />
+
                     Back to Login
                   </NavLink>
                 </div>
@@ -75,11 +70,15 @@ export default function ResetPasswordForm({ token, validToken, tokenLoading }) {
                 </div>
 
                 <div className="group">
-                  <NavLink className='btn btn-primary-link btn-medium' to='/login'>
+                  <NavLink className='btn btn-link hover-left btn-medium' to='/login'>
+                    <AiOutlineArrowLeft size={22} />
+
                     Back to Login
                   </NavLink>
 
                   <NavLink className='btn btn-primary-link btn-medium' to='/forgot-password'>
+                    <AiOutlineArrowLeft size={22} />
+
                     Forgot Password
                   </NavLink>
                 </div>
@@ -90,9 +89,6 @@ export default function ResetPasswordForm({ token, validToken, tokenLoading }) {
         ) : (
           <Loading />
         )}
-
-
-
       </div>
     </form>
   );

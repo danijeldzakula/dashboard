@@ -5,6 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { Figure, Section } from '@/components/content';
 import ResetPasswordForm from '@/components/auth/reset-password/ResetPassword';
 import { REDIRECT_TO } from '@/helpers/constant';
+import { SocialNetwork } from '@/components/social-network/SocialNetwork';
 
 export default function ResetPassword() {
   const { loggedIn } = useApp();
@@ -54,6 +55,7 @@ export default function ResetPassword() {
       <Section className="section__auth section__auth--reset-password">
         <Figure />
         <ResetPasswordForm token={token} validToken={validToken} tokenLoading={tokenLoading} />
+        <SocialNetwork />
       </Section>
     </Layout>
   );

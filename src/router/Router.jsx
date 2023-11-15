@@ -6,6 +6,7 @@ import ResetPassword from '@/pages/auth/reset-password';
 import Home from '@/pages/home-page';
 import Studio from '@/pages/studio-page';
 import NotFoundError from '@/pages/error-page';
+import Test from '@/pages/test-page';
 import ProtectedRoute from '@/layouts/protectedRoute/ProtectedRoute';
 
 export default function Router({ pathname }) {
@@ -15,6 +16,7 @@ export default function Router({ pathname }) {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/test" element={<Test />} />
       <Route path="" element={<Navigate replace to="/login" />} />
 
       <Route element={<ProtectedRoute pathname={pathname} redirectPath="/" />}>
