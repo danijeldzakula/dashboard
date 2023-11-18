@@ -5,6 +5,11 @@ import useWindowDimensions from '@/hooks/useWindowDimensions';
 
 const AppContext = createContext(null);
 
+// const data = [
+//   { _id: '1', name: 'ImageArea' },
+//   { _id: '2', name: 'RichText' },
+// ];
+
 export const AppProvider = ({ children }) => {
   const { width, height } = useWindowDimensions();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -53,7 +58,6 @@ export const AppProvider = ({ children }) => {
     }
   }, [toggle]);
 
-
   const value = useMemo(() => {
     return {
       width,
@@ -67,9 +71,7 @@ export const AppProvider = ({ children }) => {
     };
   }, [width, height, loggedIn, setLoggedIn, widgets, handleWidgets, toggle, handleToggle]);
 
-  return (
-    <AppContext.Provider value={value}>{children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useApp = () => {

@@ -26,5 +26,4 @@ export default function ContentDrag({ data, handleOnClick }) {
   }, []);
 
   return <Fragment>{cards.map((card, i) => renderCard(card, i))}</Fragment>;
-};
-
+}

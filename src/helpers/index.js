@@ -35,10 +35,43 @@ export function arrayMoveImmutable(array, fromIndex, toIndex) {
   const element = array.splice(fromIndex, 1)[0];
   array.splice(toIndex, 0, element);
   return array;
-};
-
+}
 
 export function isValidEmail(value) {
   const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(value);
+}
+
+/**
+ * Checks if the contents of two arrays are equal.
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare.
+ * @returns {boolean} Whether the arrays have equal contents.
+ */
+export function arraysAreEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  const str1 = arr1.toString();
+  const str2 = arr2.toString();
+
+  return str1 === str2;
+}
+
+/**
+ * Checks if two arrays of string values have the same elements, considering both content and order.
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare.
+ * @returns {boolean} Whether the arrays have equal string values in the same order.
+ */
+export function arraysHaveEqualElements(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  const sortedStr1 = arr1.slice().sort().toString();
+  const sortedStr2 = arr2.slice().sort().toString();
+
+  return sortedStr1 === sortedStr2;
 }

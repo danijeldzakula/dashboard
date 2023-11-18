@@ -20,3 +20,7 @@ body {
     background-color: darken($color: $white, $amount: 80);
   }
 }
+
+.hidden {
+  display: none;
+}
