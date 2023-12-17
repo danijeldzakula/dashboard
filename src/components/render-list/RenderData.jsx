@@ -20,13 +20,15 @@ const RenderData = memo(() => {
   const [status, setStatus] = useState('idle');
   const [refetch, setRefetch] = useState(false);
 
-  const isMounted = useRef(true);
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    isMounted.current = true;
+
     setStatus('loading');
     getAllProducts()
       .then((res) => {
-        if (!isMounted.current) {
+        if (isMounted.current) {
           setProducts(res.data);
           setStatus('success');
         }
