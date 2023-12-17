@@ -1,5 +1,14 @@
 import React, { useEffect } from 'react';
-import Router from '@/router/Router';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from '@/pages/auth/login-page';
+import Register from '@/pages/auth/register-page';
+import ForgotPassword from '@/pages/auth/forgot-password';
+import ResetPassword from '@/pages/auth/reset-password';
+import Home from '@/pages/home-page';
+import Studio from '@/pages/studio-page';
+import NotFoundError from '@/pages/error-page';
+import Test from '@/pages/test-page';
+import ProtectedRoute from '@/layouts/protectedRoute/ProtectedRoute';
 import { useLocation } from 'react-router-dom';
 
 export default function App() {
@@ -7,7 +16,7 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    return () => { };
+    return () => {};
   }, [pathname]);
 
   useEffect(() => {
@@ -25,8 +34,27 @@ export default function App() {
         return window.scrollTo(0, 0);
       });
     }
-    return () => { };
+    return () => {};
   }, []);
 
-  return <Router pathname={pathname} />;
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/test" element={<Test />} />
+      <Route path="/" element={<Navigate replace to="/login" />} />
+
+      <Route element={<ProtectedRoute pathname={pathname} redirectPath="/" />}>
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/dashboard">
+          <Route path="studio" element={<Studio />} />
+          <Route path="*" element={<Navigate replace to="studio" />} />
+        </Route>
+      </Route>
+
+      <Route path="*" element={<NotFoundError />} />
+    </Routes>
+  );
 }

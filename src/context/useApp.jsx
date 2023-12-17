@@ -12,7 +12,7 @@ const AppContext = createContext(null);
 
 export const AppProvider = ({ children }) => {
   const { width, height } = useWindowDimensions();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [refetchWidget, setRefetchWidget] = useState(false);
 
   const [widgets, setWidgets] = useState(() => {
