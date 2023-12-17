@@ -1,9 +1,9 @@
 import { arraysAreEqual, arraysHaveEqualElements } from '@/helpers';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useCallback } from 'react';
 
 const initNumbers = [1];
 
-const Number = ({ setData }) => {
+const RenderNumber = memo(({ setData }) => {
   const [numbers, setNumbers] = useState(initNumbers);
   const [hasReverse, setHasReverse] = useState(false);
 
@@ -54,9 +54,11 @@ const Number = ({ setData }) => {
     setHasReverse(false);
   };
 
-  const listItems = numbers.map((item) => {
-    return <li key={item.toString()}>{item}</li>;
-  });
+  const listItems = useCallback(() => {
+    return numbers.map((item) => {
+      return <li key={item.toString()}>{item}</li>;
+    });
+  }, [numbers]);
 
   useEffect(() => {
     setData((prev) => {
@@ -83,9 +85,9 @@ const Number = ({ setData }) => {
       <button disabled={isDisabled} onClick={resetNumbers}>
         Reset
       </button>
-      <ul>{listItems}</ul>
+      <ul>{listItems()}</ul>
     </div>
   );
-};
+});
 
-export const RenderNumber = memo(Number);
+export default RenderNumber;

@@ -1,9 +1,9 @@
 import { arraysAreEqual } from '@/helpers';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useCallback } from 'react';
 
 const initNames = ['Danijel', 'Kristina'];
 
-const Name = ({ setData }) => {
+const RenderName = memo(({ setData }) => {
   const [names, setNames] = useState(initNames);
 
   const addNewName = () => {
@@ -33,9 +33,11 @@ const Name = ({ setData }) => {
     setNames(initNames);
   };
 
-  const listItems = names.map((item) => {
-    return <li key={item.toString()}>{item}</li>;
-  });
+  const listItems = useCallback(() => {
+    return names.map((item) => {
+      return <li key={item.toString()}>{item}</li>;
+    });
+  }, [names]);
 
   useEffect(() => {
     setData((prev) => {
@@ -58,9 +60,9 @@ const Name = ({ setData }) => {
       <button disabled={isDisabled} onClick={resetNames}>
         Reset
       </button>
-      <ul>{listItems}</ul>
+      <ul>{listItems()}</ul>
     </div>
   );
-};
+});
 
-export const RenderName = memo(Name);
+export default RenderName;

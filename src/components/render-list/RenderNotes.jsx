@@ -1,7 +1,7 @@
 import { uuidv4 } from '@/helpers';
 import update from 'immutability-helper';
 import { ESCAPE_CODE, ESCAPE_KEY, ESC_KEY, HAS_WINDOW, STORAGE_NOTES } from '@/helpers/constant';
-import { memo, useEffect, useId, useRef, useState } from 'react';
+import { memo, useEffect, useId, useRef, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { useDrag, useDrop } from 'react-dnd';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,7 +19,7 @@ const initForm = {
   _id: '',
 };
 
-const Notes = ({ setData }) => {
+const RenderNotes = memo(({ setData }) => {
   const [refetchNotes, setRefetchNotes] = useState(false);
   const [notes, setNotes] = useState(() => {
     const data = JSON.parse(localStorage.getItem(STORAGE_NOTES));
@@ -120,6 +120,12 @@ const Notes = ({ setData }) => {
     );
   };
 
+  const listNotes = useCallback(() => {
+    return notes.map((note, idx) => {
+      return <ListItem key={note._id} note={note} index={idx} moveCard={moveCard} editNote={editNote} removeNote={removeNote} />;
+    });
+  }, [notes]);
+
   console.log('re-render notes');
 
   return (
@@ -133,18 +139,10 @@ const Notes = ({ setData }) => {
         <button type="submit">Save</button>
       </form>
 
-      {notes.length > 0 ? (
-        <ul className="notes">
-          {notes.map((note, idx) => {
-            return <ListItem key={note._id} note={note} index={idx} moveCard={moveCard} editNote={editNote} removeNote={removeNote} />;
-          })}
-        </ul>
-      ) : (
-        <p>No found data</p>
-      )}
+      {notes.length > 0 ? <ul className="notes">{listNotes()}</ul> : <p>No found data</p>}
     </div>
   );
-};
+});
 
 const ListItem = ({ note, index, moveCard, editNote, removeNote }) => {
   const id = useId();
@@ -265,4 +263,4 @@ const ListItem = ({ note, index, moveCard, editNote, removeNote }) => {
   );
 };
 
-export const RenderNotes = memo(Notes);
+export default RenderNotes;
