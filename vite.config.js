@@ -8,8 +8,8 @@ export default defineConfig({
     devSourcemap: true,
   },
   build: {
-    outDir: './webroot',
     target: 'esnext',
+    outDir: 'dist',
   },
   resolve: {
     alias: {
