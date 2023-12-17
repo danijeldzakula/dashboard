@@ -71,7 +71,7 @@ const RenderData = memo(() => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Render Data</h2>
-        <button onClick={handleRefetch}>Refresh</button>
+        <button onClick={handleRefetch}>Refetch</button>
       </div>
 
       <div>{productList()}</div>
