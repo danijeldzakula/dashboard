@@ -47,10 +47,12 @@ export default function App() {
       <Route path="/" element={<Navigate replace to="/login" />} />
 
       <Route element={<ProtectedRoute pathname={pathname} redirectPath="/" />}>
-        <Route path="/dashboard" element={<Home />} />
         <Route path="/dashboard">
-          <Route path="studio" element={<Studio />} />
-          <Route path="*" element={<Navigate replace to="studio" />} />
+          <Route path="" element={<Home />} />
+          <Route path="studio">
+            <Route path="" element={<Studio />} />
+            <Route path="*" element={<Navigate replace to="studio" />} />
+          </Route>
         </Route>
       </Route>
 
