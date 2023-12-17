@@ -1,0 +1,18 @@
+{
+  "routes": [
+    { "src": "/login", "dest": "/login" },
+    { "src": "/register", "dest": "/register" },
+    { "src": "/forgot-password", "dest": "/forgot-password" },
+    { "src": "/reset-password/:token", "dest": "/reset-password/:token" },
+    { "src": "/test", "dest": "/test" },
+    { "src": "/", "dest": "/login" },
+    { "src": "/dashboard", "dest": "/dashboard" },
+    { "src": "/dashboard/studio", "dest": "/dashboard/studio" },
+    { "src": "/dashboard/*", "dest": "/dashboard/studio" },
+    { "src": "/404", "dest": "/404" }
+  ],
+  "rewrites": [
+    { "source": "/dashboard", "destination": "/dashboard" },
+    { "source": "/dashboard/*", "destination": "/dashboard" }
+  ]
+}
