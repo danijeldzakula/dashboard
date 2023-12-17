@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import Login from '@/pages/auth/login-page';
-// import Register from '@/pages/auth/register-page';
-// import ForgotPassword from '@/pages/auth/forgot-password';
-// import ResetPassword from '@/pages/auth/reset-password';
-// import Home from '@/pages/home-page';
-// import Studio from '@/pages/studio-page';
-// import NotFoundError from '@/pages/error-page';
-// import Test from '@/pages/test-page';
-import ProtectedRoute from './layouts/protectedRoute/ProtectedRoute';
 import { useLocation } from 'react-router-dom';
+import ProtectedRoute from '@/layouts/protectedRoute/ProtectedRoute';
+
+import Login from '@/pages/auth/login-page';
+import Register from '@/pages/auth/register-page';
+import ForgotPassword from '@/pages/auth/forgot-password';
+import ResetPassword from '@/pages/auth/reset-password';
+import Home from '@/pages/home-page';
+import Studio from '@/pages/studio-page';
+import NotFoundError from '@/pages/error-page';
+import Test from '@/pages/test-page';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -59,36 +60,4 @@ export default function App() {
       <Route path="*" element={<NotFoundError />} />
     </Routes>
   );
-}
-
-function Login() {
-  return <h1>Login</h1>;
-}
-
-function Register() {
-  return <h1>Register</h1>;
-}
-
-function ForgotPassword() {
-  return <h1>ForgotPassword</h1>;
-}
-
-function ResetPassword() {
-  return <h1>ResetPassword</h1>;
-}
-
-function Test() {
-  return <h1>Test</h1>;
-}
-
-function Home() {
-  return <h1>Home</h1>;
-}
-
-function Studio() {
-  return <h1>Login</h1>;
-}
-
-function NotFoundError() {
-  return <h1>NotFoundError</h1>;
 }
