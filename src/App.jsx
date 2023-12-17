@@ -8,7 +8,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 // import Studio from '@/pages/studio-page';
 // import NotFoundError from '@/pages/error-page';
 // import Test from '@/pages/test-page';
-import ProtectedRoute from '@/layouts/protectedRoute/ProtectedRoute';
+import ProtectedRoute from './layouts/protectedRoute/ProtectedRoute';
 import { useLocation } from 'react-router-dom';
 
 export default function App() {
