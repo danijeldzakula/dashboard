@@ -40,9 +40,8 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      {/*
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
       <Route path="/test" element={<Test />} />
@@ -58,7 +57,7 @@ export default function App() {
         </Route>
       </Route>
 
-      <Route path="*" element={<NotFoundError />} /> */}
+      <Route path="*" element={<NotFoundError />} />
     </Routes>
   );
 }

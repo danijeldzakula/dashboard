@@ -13,9 +13,11 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <Router>
-      <DndProvider backend={HTML5Backend}>
-        <App />
-      </DndProvider>
+      <AppProvider>
+        <DndProvider backend={HTML5Backend}>
+          <App />
+        </DndProvider>
+      </AppProvider>
     </Router>
   </StrictMode>
 );
