@@ -1,17 +1,17 @@
 import Layout from '@/layouts';
-import { useApp } from '@/context/useApp';
-import { Navigate } from 'react-router-dom';
+// import { useApp } from '@/context/useApp';
+// import { Navigate } from 'react-router-dom';
 import { Figure, Section } from '@/components/content';
-import { REDIRECT_TO } from '@/helpers/constant';
+// import { REDIRECT_TO } from '@/helpers/constant';
 import LoginForm from '@/components/auth/login/LoginForm';
 import { SocialNetwork } from '@/components/social-network/SocialNetwork';
 
 export default function Login() {
-  const { loggedIn } = useApp();
+  // const { loggedIn } = useApp();
 
-  if (loggedIn) {
-    return <Navigate replace to={REDIRECT_TO} />;
-  }
+  // if (loggedIn) {
+  //   return <Navigate replace to={REDIRECT_TO} />;
+  // }
 
   return (
     <Layout>
