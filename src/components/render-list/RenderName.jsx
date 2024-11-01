@@ -1,7 +1,7 @@
 import { arraysAreEqual } from '@/helpers';
 import { memo, useEffect, useState, useCallback } from 'react';
 
-const initNames = ['Danijel', 'Kristina'];
+const initNames = ['React', 'Shadcn'];
 
 const RenderName = memo(({ setData }) => {
   const [names, setNames] = useState(initNames);
